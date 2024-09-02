@@ -9,6 +9,7 @@ class Candidate(models.Model):
     phone_number = models.CharField(unique=True, max_length=20)
     telegram = models.CharField(max_length=50)
     level = models.CharField(max_length=20)
+    salary = models.IntegerField(null=True)
     cv = models.FileField(upload_to='all_cvs/', blank=True, null=True)
     employee_id = models.ForeignKey(Employees, on_delete=models.CASCADE, related_name='candidates')
     vacancy_id = models.ForeignKey(Vacancies, on_delete=models.CASCADE, related_name='candidates')
