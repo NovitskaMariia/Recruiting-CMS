@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from candidates.models import Candidate
 
 
 class Stages(models.Model):
@@ -10,14 +11,14 @@ class Stages(models.Model):
         return self.name
 
     class Meta:
-        db_table = "industries"
+        db_table = "stages"
 
 
 class Recruitment_prosses(models.Model):
     
     id = models.AutoField(primary_key=True)
-    # candidate_id = models.ForeignKey()
-    stage = models.ForeignKey(Stages, related_name="satge", on_delete=models.CASCADE)
+    candidate_id = models.ForeignKey(Candidate, on_delete=models.CASCADE)
+    stage = models.ForeignKey(Stages, related_name="stage", on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
     comment = models.TextField(blank=True)
     
