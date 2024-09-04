@@ -1,14 +1,14 @@
 from django.db import models
 from django.utils import timezone
-# from candidates.models import Candidate
 from recruitment_prosses.models import Recruitment_prosses
 from django.core.validators import MinValueValidator, MaxValueValidator
+from authentication.models import CustomUser
 
 
 class Feedback(models.Model):
     
     id = models.AutoField(primary_key=True)
-    # employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    employee_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     prosses_id = models.ForeignKey(Recruitment_prosses, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
     rating =  models.IntegerField(

@@ -1,7 +1,6 @@
 from django.db import models
-
-from vacancies.models import Vacancies
-from employees.models import Employees
+from authentication.models import CustomUser
+from vacancies.models import Vacancie
 
 class Candidate(models.Model):
     id = models.AutoField(primary_key=True)
@@ -13,8 +12,8 @@ class Candidate(models.Model):
     level = models.CharField(max_length=20)
     salary = models.IntegerField(null=True)
     cv = models.FileField(upload_to='all_cvs/', blank=True, null=True)
-    # employee_id = models.ForeignKey(Employees, on_delete=models.CASCADE, related_name='candidates')
-    # vacancy_id = models.ForeignKey(Vacancies, on_delete=models.CASCADE, related_name='candidates')
+    employee_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='candidates')
+    vacancy_id = models.ForeignKey(Vacancie, on_delete=models.CASCADE, related_name='candidates')
     status = models.CharField(max_length=20)
     source = models.CharField(max_length=20, null=True)
     rating = models.IntegerField(null=True)
@@ -23,3 +22,4 @@ class Candidate(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} - {self.vacancy_id}'
+
