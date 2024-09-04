@@ -1,5 +1,7 @@
 from django.db import models
 
+from vacancies.models import Vacancies
+from employees.models import Employees
 
 class Candidate(models.Model):
     id = models.AutoField(primary_key=True)
