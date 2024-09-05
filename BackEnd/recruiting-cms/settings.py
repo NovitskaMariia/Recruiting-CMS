@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'recruiting-cms.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-SECRET_KEY = config('SECRET_KEY_DJANGO')
+#SECRET_KEY = config('SECRET_KEY_DJANGO')
 
 DATABASES = {
     "default": {
