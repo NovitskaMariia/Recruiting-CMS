@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
+
+
+from decouple import config
 from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,7 +61,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'recruiting.urls'
+ROOT_URLCONF = 'recruiting-cms.urls'
 
 TEMPLATES = [
     {
@@ -75,11 +79,13 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'recruiting.wsgi.application'
+WSGI_APPLICATION = 'recruiting-cms.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
+SECRET_KEY = config('SECRET_KEY_DJANGO')
 
 DATABASES = {
     "default": {
@@ -91,7 +97,6 @@ DATABASES = {
         "PORT": os.environ.get("POSTGRES_PORT"),
     },
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
